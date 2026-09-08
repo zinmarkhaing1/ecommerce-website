@@ -6,6 +6,7 @@ import HomePage from '../features/home/pages/HomePage';
 import ProductsPage from '../features/products/pages/ProductsPage';
 import DashboardPage from '../features/dashboard/pages/DashboardPage';
 
+
 export default function App() {
   return (
     <AppProviders>
@@ -18,6 +19,7 @@ export default function App() {
         <Route element={<DashboardLayout />}>
           <Route path="/dashboard" element={<DashboardPage />} />
         </Route>
+
 
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
