@@ -18,7 +18,7 @@ const navItems = [
 
 const NavBar = () => {
   return (
-    <AppBar position="sticky" color="primary" elevation={1}>
+    <AppBar position="sticky" elevation={1} >
       <Toolbar sx={{ justifyContent: 'space-between', gap: 2 }}>
         <Typography
           component={RouterLink}
@@ -34,7 +34,7 @@ const NavBar = () => {
           MyShop
         </Typography>
 
-        <Box component="nav" sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
+        <Box component="nav" sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap' }}>
           {navItems.map((item) => (
             <Button
               key={item.to}
@@ -48,7 +48,7 @@ const NavBar = () => {
           ))}
         </Box>
 
-        <IconButton color="inherit" aria-label="cart" sx={{ ml: 1 }}>
+        <IconButton color="inherit" aria-label="cart" sx={{ ml: 0.5 }}>
           <Badge badgeContent={3} color="error">
             <ShoppingCartOutlinedIcon />
           </Badge>
@@ -58,4 +58,4 @@ const NavBar = () => {
   );
 };
 
-export default Navbar;
+export default NavBar;
