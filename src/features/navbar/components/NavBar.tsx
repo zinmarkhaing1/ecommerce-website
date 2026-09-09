@@ -18,20 +18,20 @@ const navItems = [
 
 const NavBar = () => {
   return (
-    <AppBar position="sticky" elevation={1} >
+    <AppBar position="sticky" elevation={1} sx={{ color:'#f7fff7'}}>
       <Toolbar sx={{ justifyContent: 'space-between', gap: 2 }}>
         <Typography
           component={RouterLink}
           to="/"
           variant="h6"
           sx={{
-            color: 'inherit',
+            color: '#000',
             textDecoration: 'none',
             fontWeight: 700,
             letterSpacing: 0.5,
           }}
         >
-          MyShop
+          Luna Ladies
         </Typography>
 
         <Box component="nav" sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap' }}>
@@ -40,8 +40,8 @@ const NavBar = () => {
               key={item.to}
               component={RouterLink}
               to={item.to}
-              color="inherit"
-              sx={{ textTransform: 'none' }}
+              
+              sx={{ textTransform: 'none',color:'#000' }}
             >
               {item.label}
             </Button>
