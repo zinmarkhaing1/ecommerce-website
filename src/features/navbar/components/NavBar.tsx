@@ -152,6 +152,16 @@ const NavBar = () => {
                   ),
                 },
               }}
+               sx={{
+                width:450,
+                '& .MuiOutlinedInput-root': {
+                  borderRadius: 3,
+                  bgcolor: '#fff',
+                  '& fieldset': { borderColor: palette.border },
+                  '&:hover fieldset': { borderColor: palette.accent },
+                  '&.Mui-focused fieldset': { borderColor: palette.accent },
+                },
+              }}
             />
           </Box>
 

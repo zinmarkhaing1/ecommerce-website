@@ -7,9 +7,13 @@ export default function ProductsPage() {
   const { data: products = [], isLoading, isError, refetch } = useProducts();
   const [searchParams] = useSearchParams();
   const query = searchParams.get('q')?.trim().toLowerCase() ?? '';
-  const filteredProducts = query
-    ? products.filter((product) => product.title.toLowerCase().includes(query))
-    : products;
+  const category = searchParams.get('search')?.trim().toLowerCase() ?? '';
+  const filteredProducts = products.filter((product) => {
+    const matchesTitle = !query || product.title.toLowerCase().includes(query);
+    const matchesCategory = !category || product.category.toLowerCase() === category;
+
+    return matchesTitle && matchesCategory;
+  });
 
   if (isLoading) {
     return (
@@ -59,7 +63,7 @@ export default function ProductsPage() {
           <h1 id="products-heading">Find your next favorite.</h1>
         </div>
         <p className="products-page__status">
-          No products found for "{searchParams.get('q')}".
+          No products found for the selected filters.
         </p>
       </section>
     );
