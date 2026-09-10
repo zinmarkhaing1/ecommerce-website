@@ -14,8 +14,8 @@ export function Button({ children, type = 'button', variant = 'primary', onClick
         padding: '0.75rem 1rem',
         border: 'none',
         borderRadius: '8px',
-        background: variant === 'primary' ? '#2563eb' : '#e5e7eb',
-        color: variant === 'primary' ? '#fff' : '#111827',
+        background: variant === 'primary' ? '#9c1111' : '#e5e7eb',
+        color: variant === 'primary' ? '#d88180' : '#111827',
         cursor: 'pointer',
       }}
     >

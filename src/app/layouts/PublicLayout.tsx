@@ -5,7 +5,7 @@ export function PublicLayout() {
   return (
     <>
       <NavBar />
-      <main style={{ padding: '2rem' }}>
+      <main style={{ padding: '1rem' }}>
         <Outlet />
       </main>
     </>

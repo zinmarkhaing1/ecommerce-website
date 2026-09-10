@@ -9,7 +9,11 @@ import {
 import { Button } from "../../../shared/components/Button";
 import type { Product } from "../../../shared/types";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import StarOutlinedIcon from "@mui/icons-material/StarOutlined";
+import { useAuth } from "../../auth";
+import { useCart } from "../../cart";
+
 type ProductCardProps = {
   product: Product;
 };
@@ -18,6 +22,17 @@ export function ProductCard({ product }: ProductCardProps) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const navigate = useNavigate();
+  const { isAuthenticated } = useAuth();
+  const { addToCart } = useCart();
+
+  function handleAddToCart() {
+    if (!isAuthenticated) {
+      navigate("/login", { state: { from: { pathname: "/products" } } });
+      return;
+    }
+    addToCart(product);
+  }
   return (
     // <article className="product-card">
     //   <div className="product-card__image-wrap">
@@ -40,24 +55,26 @@ export function ProductCard({ product }: ProductCardProps) {
       <Card
         component="article"
         sx={{
-          height: "100%",
+          // height: "100%",
           display: "flex",
           flexDirection: "column",
           borderRadius: 2,
           overflow: "hidden",
+          minHeight: 250,
         }}
       >
         {/* Image */}
         <Box
           onClick={handleOpen}
           sx={{
-            height: 280,
+            height: 250,
             flexShrink: 0,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             bgcolor: "grey.50",
-            p: 2,
+            mt:0.5
+          
           }}
         >
           <CardMedia
@@ -79,7 +96,7 @@ export function ProductCard({ product }: ProductCardProps) {
             display: "flex",
             flexDirection: "column",
             flexGrow: 1,
-            p: 3,
+          
           }}
         >
           {/* Category */}
@@ -89,7 +106,7 @@ export function ProductCard({ product }: ProductCardProps) {
             color="text.secondary"
             sx={{
               fontWeight: 600,
-              mb: 0.5,
+           
             }}
           >
             {product.category}
@@ -101,7 +118,7 @@ export function ProductCard({ product }: ProductCardProps) {
             variant="h6"
             sx={{
               fontWeight: 600,
-              mb: 2,
+              
               minHeight: "3.5rem",
               display: "-webkit-box",
               WebkitLineClamp: 2,
@@ -118,7 +135,7 @@ export function ProductCard({ product }: ProductCardProps) {
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              m: 2,
+             mt:'auto',
             }}
           >
             <Typography
@@ -140,9 +157,9 @@ export function ProductCard({ product }: ProductCardProps) {
           </Box>
 
           {/* Button */}
-          <Button variant="contained" sx={{ mt: "auto", fullwidth: true }}>
+          {/* <Button variant="primary" onClick={handleAddToCart}>
             Add to cart
-          </Button>
+          </Button> */}
         </CardContent>
       </Card>
   
@@ -290,20 +307,19 @@ export function ProductCard({ product }: ProductCardProps) {
                 mt: 2,
                 }}
               >
-                <Button variant="contained"
-                 size="large" 
-                 fullWidth
+                <Button variant="primary"
+                type="button"
+                onClick={handleAddToCart}
                   >
                   Add to cart
                 </Button>
 
                 {/* Close */}
                 <Button
-                  variant="text"
-                  size="large"
-                  fullWidth
+                  variant="secondary"
+                  type="reset"
                   onClick={handleClose}
-                  sx={{ flex:1, }}
+                  // sx={{ flex:1,fullWidth:'true' }}
                 >
                   Close
                 </Button>

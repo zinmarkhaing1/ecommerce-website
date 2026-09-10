@@ -1,9 +1,15 @@
 import {Box, Typography} from "@mui/material";
+import { useSearchParams } from 'react-router-dom';
 import { ProductCard } from '../components/ProductCard';
 import { useProducts } from '../hooks/useProducts';
 
 export default function ProductsPage() {
   const { data: products = [], isLoading, isError, refetch } = useProducts();
+  const [searchParams] = useSearchParams();
+  const query = searchParams.get('q')?.trim().toLowerCase() ?? '';
+  const filteredProducts = query
+    ? products.filter((product) => product.title.toLowerCase().includes(query))
+    : products;
 
   if (isLoading) {
     return (
@@ -41,6 +47,20 @@ export default function ProductsPage() {
           <h1 id="products-heading">Find your next favorite.</h1>
         </div>
         <p className="products-page__status">There are no products to show yet.</p>
+      </section>
+    );
+  }
+
+  if (filteredProducts.length === 0) {
+    return (
+      <section className="products-page" aria-labelledby="products-heading">
+        <div className="products-page__intro">
+          <p className="eyebrow">The collection</p>
+          <h1 id="products-heading">Find your next favorite.</h1>
+        </div>
+        <p className="products-page__status">
+          No products found for "{searchParams.get('q')}".
+        </p>
       </section>
     );
   }
@@ -106,7 +126,7 @@ export default function ProductsPage() {
       gap: 3,
     }}
   >
-    {products.map((product) => (
+    {filteredProducts.map((product) => (
       <ProductCard key={product.id} product={product} />
     ))}
   </Box>
