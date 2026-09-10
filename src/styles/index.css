@@ -1,9 +1,9 @@
 :root {
-  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: Georgia, 'Times New Roman', serif;
   line-height: 1.5;
   font-weight: 400;
   color: #111827;
-  background: #f9fafb;
+  background: #f4f0e8;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -31,4 +31,127 @@ a {
 
 button, input, select, textarea {
   font: inherit;
+}
+
+.products-page {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 2rem 0 4rem;
+}
+
+.products-page__intro {
+  max-width: 620px;
+  margin-bottom: 2.5rem;
+}
+
+.products-page__intro h1 {
+  margin: 0.35rem 0 0.75rem;
+  color: #183b35;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  line-height: 0.98;
+  font-weight: 500;
+}
+
+.products-page__intro p:last-child {
+  margin: 0;
+  color: #66736d;
+  font-size: 1.1rem;
+}
+
+.eyebrow,
+.product-card__category {
+  margin: 0;
+  color: #c2683f;
+  font-family: Arial, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+
+.product-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #e2dcd1;
+  background: #fffdf8;
+}
+
+.product-card__image-wrap {
+  display: grid;
+  aspect-ratio: 1 / 1.08;
+  place-items: center;
+  padding: 1.5rem;
+  background: #ebe6dc;
+}
+
+.product-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+
+.product-card__content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 1.25rem;
+}
+
+.product-card__title {
+  margin: 0.55rem 0 1rem;
+  color: #183b35;
+  font-size: 1.1rem;
+  line-height: 1.25;
+}
+
+.product-card__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: auto;
+  margin-bottom: 1rem;
+  color: #66736d;
+  font-family: Arial, sans-serif;
+  font-size: 0.85rem;
+}
+
+.product-card__meta strong {
+  color: #183b35;
+  font-size: 1.05rem;
+}
+
+.products-page__status {
+  padding: 2rem;
+  border: 1px dashed #cfc6b8;
+  color: #66736d;
+  text-align: center;
+}
+
+.products-page__status--error {
+  border-color: #c2683f;
+  color: #8b3e27;
+}
+
+.products-page__status button {
+  padding: 0.6rem 1rem;
+  border: 1px solid #183b35;
+  background: #183b35;
+  color: #fffdf8;
+  cursor: pointer;
+}
+
+@media (max-width: 640px) {
+  .products-page {
+    padding-top: 1rem;
+  }
 }

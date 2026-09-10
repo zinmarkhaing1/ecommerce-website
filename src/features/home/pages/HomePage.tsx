@@ -8,7 +8,7 @@ export default function HomePage() {
     // </section>
     <Box>
       <Typography>Your Style, Your Story </Typography>
-      <Typography>Discover beautiful fashion made especially for you.</Typography>
+      <Typography>Discover beautiful fashion,, accessories  made especially for you.</Typography>
     </Box>
   );
 }
