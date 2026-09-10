@@ -14,10 +14,13 @@ import {
   Select,
   TextField,
   Typography,
+  InputAdornment,
+  IconButtonProps,
   type SelectChangeEvent,
 } from '@mui/material';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import PersonIcon from '@mui/icons-material/Person';
+import SearchIcon from '@mui/icons-material/Search';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { useState, type MouseEvent } from 'react';
 import { useAuth } from '../../auth';
@@ -137,9 +140,18 @@ const NavBar = () => {
               onChange={(event) => setTitleSearch(event.target.value)}
               placeholder="Search by title"
               // inputProps={{ 'aria-label': 'Search products by title' }}
-              slotProps={{input:{
-                'aria-label':'Search product by title'
-              }}}
+               slotProps={{
+                input: {
+                  'aria-label': 'Search products by title',
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton type="submit" edge="end" aria-label="search">
+                        <SearchIcon />
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                },
+              }}
             />
           </Box>
 
